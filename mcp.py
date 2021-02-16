@@ -5,7 +5,7 @@ import requests
 import json
 import time
 
-file = open('index.txt', 'w')
+file = open('README.md', 'w')
  
 file.write('Welcome to the Meyers Crypto Portfolio Value tool \n')
 file.write('Please see below for our valuation.\n\n\n')
