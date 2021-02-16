@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Meyer Crypto Portfolio</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>mcp</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,7 +14259,7 @@ a.anchor-link {
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
@@ -14274,10 +14274,10 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.nomics.com/v1/currencies/ticker?key=ea386addbac03f4bb67ceb1f333a8d0a&amp;ids=BTC,ETH&amp;interval=1d&amp;convert=USD&amp;per-page=100&amp;page=1&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prices</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.nomics.com/v1/currencies/ticker?key=ea386addbac03f4bb67ceb1f333a8d0a&amp;ids=BTC,ETH&amp;interval=1d&amp;convert=USD&amp;per-page=100&amp;page=1&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14288,10 +14288,10 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -14302,13 +14302,13 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bit</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;price&#39;</span><span class="p">])</span>
-<span class="n">eth</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;price&#39;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bit_price</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;price&#39;</span><span class="p">])</span>
+<span class="n">eth_price</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;price&#39;</span><span class="p">])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">bit</span><span class="p">,</span><span class="n">eth</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Current price of BTC is $</span><span class="si">{</span><span class="n">bit_price</span><span class="si">}</span><span class="s1"> current price of ETH is $</span><span class="si">{</span><span class="n">eth_price</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14328,7 +14328,7 @@ a.anchor-link {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>48947.13101467 1794.69075522
+<pre>Current price of BTC is $49190.18156216 current price of ETH is $1804.32260342
 </pre>
 </div>
 </div>
@@ -14337,30 +14337,24 @@ a.anchor-link {
 
 </div>
 
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Current holdings:</p>
-
-<pre><code>- Bitcoin = 0.981
-- Ethereum = 24.294</code></pre>
-
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bitH</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mf">0.981</span><span class="p">)</span>
-<span class="n">ethH</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mf">24.294</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.ethplorer.io/getAddressInfo/0xed8b4b3ba4fd5a175613859cab6ab8f010276a3a?apiKey=freekey&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-<span class="n">eth</span> <span class="o">=</span> <span class="n">ethH</span><span class="o">*</span><span class="n">eth</span>
-<span class="n">bit</span> <span class="o">=</span> <span class="n">bitH</span><span class="o">*</span><span class="n">bit</span>
+<span class="n">eth_holdings</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;ETH&#39;</span><span class="p">][</span><span class="s1">&#39;balance&#39;</span><span class="p">])</span>
 
-<span class="n">value</span> <span class="o">=</span> <span class="n">eth</span><span class="o">+</span><span class="n">bit</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://blockchain.info/balance?active=16MuqwYTRT1qTFmwF5WsgfsrA9rE3UmPQN&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Current Value is: &#39;</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+<span class="n">bit_holdings1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;16MuqwYTRT1qTFmwF5WsgfsrA9rE3UmPQN&#39;</span><span class="p">][</span><span class="s1">&#39;final_balance&#39;</span><span class="p">]</span>
+<span class="n">bit_holdings</span> <span class="o">=</span> <span class="mf">0.98</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Current holdings of BTC is </span><span class="si">{</span><span class="n">bit_holdings</span><span class="si">}</span><span class="s1">BTC current holdings of ETH is </span><span class="si">{</span><span class="n">eth_holdings</span><span class="si">}</span><span class="s1">ETH&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14380,7 +14374,47 @@ a.anchor-link {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Current Value is:  91617.35273270594
+<pre>Current holdings of BTC is 0.98BTC current holdings of ETH is 24.255477532ETH
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[40]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">eth</span> <span class="o">=</span> <span class="n">eth_holdings</span><span class="o">*</span><span class="n">eth_price</span>
+<span class="n">bit</span> <span class="o">=</span> <span class="n">bit_holdings</span><span class="o">*</span><span class="n">bit_price</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="n">eth</span><span class="o">+</span><span class="n">bit</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Current Value is $</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Current Value is $91971.08429865036
 </pre>
 </div>
 </div>
