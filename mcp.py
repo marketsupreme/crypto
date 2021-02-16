@@ -7,7 +7,7 @@ import time
 
 file = open('README.md', 'w')
  
-file.write('Welcome to the Meyers Crypto Portfolio Value tool \n')
+file.write('Welcome to the Meyers Crypto Portfolio Value tool. \n')
 file.write('Please see below for our valuation.\n\n\n')
 
 prices = requests.get('https://api.nomics.com/v1/currencies/ticker?key=ea386addbac03f4bb67ceb1f333a8d0a&ids=BTC,ETH&interval=1d&convert=USD&per-page=100&page=1')
