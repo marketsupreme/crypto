@@ -14302,11 +14302,11 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bit</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
-<span class="n">eth</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bit</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;price&#39;</span><span class="p">])</span>
+<span class="n">eth</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;price&#39;</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">bit</span><span class="p">,</span><span class="n">eth</span><span class="p">)</span>
 </pre></div>
@@ -14346,21 +14346,56 @@ a.anchor-link {
 - Ethereum = 24.294</code></pre>
 
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bitH</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mf">0.981</span><span class="p">)</span>
+<span class="n">ethH</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mf">24.294</span><span class="p">)</span>
+
+<span class="n">eth</span> <span class="o">=</span> <span class="n">ethH</span><span class="o">*</span><span class="n">eth</span>
+<span class="n">bit</span> <span class="o">=</span> <span class="n">bitH</span><span class="o">*</span><span class="n">bit</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="n">eth</span><span class="o">+</span><span class="n">bit</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Current Value is: &#39;</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Current Value is:  91617.35273270594
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bitH</span> <span class="o">=</span> <span class="mf">0.981</span>
-<span class="n">ethH</span> <span class="o">=</span> <span class="mf">24.294</span>
-
-<span class="n">eth</span> <span class="o">=</span> <span class="n">eth</span><span class="o">*</span><span class="n">ethH</span>
-<span class="n">bit</span> <span class="o">=</span> <span class="n">bitH</span><span class="o">*</span><span class="n">bit</span>
-
-<span class="n">value</span> <span class="o">=</span> <span class="n">eth</span><span class="o">+</span><span class="n">bit</span>
-
-<span class="n">Print</span><span class="p">(</span><span class="s1">&#39;Current Value is: &#39;</span><span class="n">value</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
      </div>
