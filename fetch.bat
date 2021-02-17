@@ -1,5 +1,5 @@
 @echo off
-python mcp.py
+mcp.py
 git add .
 PAUSE
 git commit -m "daily commit"
