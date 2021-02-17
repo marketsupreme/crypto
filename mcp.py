@@ -21,10 +21,10 @@ def getValue():
 
     eth_holdings = data['ETH']['balance']
 
-    b = get('https://blockchain.info/balance?active=16MuqwYTRT1qTFmwF5WsgfsrA9rE3UmPQN')
-    data = b.json()
+    # b = get('https://blockchain.info/balance?active=16MuqwYTRT1qTFmwF5WsgfsrA9rE3UmPQN')
+    # data = b.json()
 
-    bit_holdings1 = data['16MuqwYTRT1qTFmwF5WsgfsrA9rE3UmPQN']['final_balance']
+    # bit_holdings1 = data['16MuqwYTRT1qTFmwF5WsgfsrA9rE3UmPQN']['final_balance']
     bit_holdings = 0.98
 
     eth_value = eth_holdings*eth_price
@@ -58,7 +58,7 @@ def main():
     wb.save(filename='value.xlsx')
     wb.close()
 
-    file.write(f'<img align="left" width="156px" src="images/Capture.png" alt="NEH"class="rpad"/>')
+    file.write(f'<img src="images/Capture.png" alt="NEH"class="rpad"/>')
 
     t.sleep(1)
 
