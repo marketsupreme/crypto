@@ -47,9 +47,8 @@ def main():
     file.write(f'BTC Price = ${coin_list[0]}\n ETH Price = ${coin_list[3]}\n')
     file.write(f'BTC Holdings = {coin_list[2]}BTC\n ETH holdings = {coin_list[5]}ETH \n')
 
-
-
     df = pd.DataFrame({'Date':[str(today)],'Value':[str(vals)]})
+    
     wb = load_workbook(filename = 'value.xlsx')
     ws = wb['Sheet']
 
@@ -58,6 +57,8 @@ def main():
     ws.cell(column=2, row = newRowLoc, value =str(vals))
     wb.save(filename='value.xlsx')
     wb.close()
+
+    file.write(f'<img align="left" width="156px" src="images/Capture.png" alt="NEH"')
 
     t.sleep(1)
 
