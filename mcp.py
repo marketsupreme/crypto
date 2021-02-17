@@ -58,7 +58,7 @@ def main():
     wb.save(filename='value.xlsx')
     wb.close()
 
-    file.write(f'<img align="left" width="156px" src="images/Capture.png" alt="NEH"')
+    file.write(f'<img align="left" width="156px" src="images/Capture.png" alt="NEH"class="rpad"/>')
 
     t.sleep(1)
 
