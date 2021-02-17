@@ -1,48 +1,52 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import requests
+from requests import get
 import json
-import time
+import time as t
+from datetime import date, datetime
 
-file = open('README.md', 'w')
- 
-file.write('Welcome to the Meyers Crypto Portfolio Value tool. \n')
-file.write('Please see below for our valuation.\n\n\n')
+def getValue():
 
-prices = requests.get('https://api.nomics.com/v1/currencies/ticker?key=ea386addbac03f4bb67ceb1f333a8d0a&ids=BTC,ETH&interval=1d&convert=USD&per-page=100&page=1')
+    prices = get('https://api.nomics.com/v1/currencies/ticker?key=ea386addbac03f4bb67ceb1f333a8d0a&ids=BTC,ETH&interval=1d&convert=USD&per-page=100&page=1')
 
-data = prices.json()
+    data = prices.json()
 
-bit_price = float(data[0]['price'])
-eth_price = float(data[1]['price'])
+    bit_price = float(data[0]['price'])
+    eth_price = float(data[1]['price'])
 
-file.write(f'Current price of BTC is ${bit_price} and current price of ETH is ${eth_price}\n')
+    e = get('https://api.ethplorer.io/getAddressInfo/0xed8b4b3ba4fd5a175613859cab6ab8f010276a3a?apiKey=freekey')
+    data = e.json()
 
-e = requests.get('https://api.ethplorer.io/getAddressInfo/0xed8b4b3ba4fd5a175613859cab6ab8f010276a3a?apiKey=freekey')
-data = e.json()
+    eth_holdings = float(data['ETH']['balance'])
 
-eth_holdings = float(data['ETH']['balance'])
+    b = get('https://blockchain.info/balance?active=16MuqwYTRT1qTFmwF5WsgfsrA9rE3UmPQN')
+    data = b.json()
 
-b = requests.get('https://blockchain.info/balance?active=16MuqwYTRT1qTFmwF5WsgfsrA9rE3UmPQN')
-data = b.json()
+    bit_holdings1 = data['16MuqwYTRT1qTFmwF5WsgfsrA9rE3UmPQN']['final_balance']
+    bit_holdings = 0.98
 
-bit_holdings1 = data['16MuqwYTRT1qTFmwF5WsgfsrA9rE3UmPQN']['final_balance']
-bit_holdings = 0.98
+    eth_value = eth_holdings*eth_price
+    bit_value = bit_holdings*bit_price
 
-file.write(f'Current holdings of BTC is {bit_holdings}BTC and current holdings of ETH is {eth_holdings}ETH \n\n')
+    return [bit_price,bit_value,bit_holdings,eth_price,eth_value,eth_holdings]
 
+def main():
+    file = open('README.md', 'w')
+    today = date.today().strftime("%m/%d/%y")
+    time = datetime.now().strftime("%H:%M:%S")
 
-# In[40]:
+    coin_list = getValue()
 
+    vals = coin_list[1]+coin_list[4]
 
-eth = eth_holdings*eth_price
-bit = bit_holdings*bit_price
+    file.write('Welcome to the Meyers Crypto Portfolio Value tool. \n')
+    file.write(f'As of {today} at {time} our valuation is ${vals} \n\n')
+    file.write(f'BTC Price = ${coin_list[0]}\n ETH Price = ${coin_list[3]}\n')
+    file.write(f'BTC Holdings = {coin_list[2]}BTC\n ETH holdings = {coin_list[5]}ETH \n')
 
-value = eth+bit
-
-file.write(f'Current Portfoio Value is ${value}\n')
-time.sleep(3)
+    t.sleep(1)
+main()
 
 
 
