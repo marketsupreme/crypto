@@ -43,7 +43,7 @@ def main():
     file.write('Welcome to the Meyers Crypto Portfolio Value tool. \n')
     file.write(f'As of {today} at {time} our valuation is ${vals} \n\n')
     file.write(f'BTC Price = ${coin_list[0]}\n ETH Price = ${coin_list[3]}\n')
-    file.write(f'BTC Holdings = {coin_list[2]}BTC\n ETH holdings = {coin_list[5]}ETH \n')
+    file.write(f'                  BTC Holdings = {coin_list[2]}BTC\n ETH holdings = {coin_list[5]}ETH \n')
 
     t.sleep(1)
 main()
