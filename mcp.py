@@ -25,7 +25,7 @@ def getValue():
     # data = b.json()
 
     # bit_holdings1 = data['16MuqwYTRT1qTFmwF5WsgfsrA9rE3UmPQN']['final_balance']
-    bit_holdings = 0.98
+    bit_holdings = 1.06
 
     eth_value = eth_holdings*eth_price
     bit_value = bit_holdings*bit_price
