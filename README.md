@@ -1,7 +1,7 @@
 Welcome to the Meyers Crypto Portfolio Value tool. 
-As of 04/21/21 at 10:24:38 our valuation is $124839.06 
+As of 04/21/21 at 11:24:39 our valuation is $125463.86 
 
-BTC Price = $56141.11
- ETH Price = $2423.2
+BTC Price = $56173.28
+ ETH Price = $2445.11
 BTC Holdings = 1.06BTC
  ETH holdings = 26.960005962ETH 
