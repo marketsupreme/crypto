@@ -1,14 +1,14 @@
-		10/14/21 @ 12:30:20 
+		10/14/21 @ 13:30:20 
 
 
 
-		Value: $163569.56
+		Value: $161872.74
 
 
 
-BTC Price = $57400.37
+BTC Price = $57094.44
 
- ETH Price = $3810.28
+ ETH Price = $3759.37
 
 
 BTC Holdings = 1.06BTC
