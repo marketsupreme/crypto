@@ -30,7 +30,7 @@ def getValue():
     eth_value = eth_holdings*eth_price
     bit_value = bit_holdings*bit_price
 
-    return [bit_price,bit_value,bit_holdings,eth_price,eth_value,eth_holdings]
+    return [bit_price, bit_value, bit_holdings, eth_price, eth_value, eth_holdings]
 
 def main():
 
@@ -44,8 +44,8 @@ def main():
 
     file.write('Welcome to the Meyers Crypto Portfolio Value tool. \n')
     file.write(f'As of {today} at {time} our valuation is ${vals} \n\n')
-    file.write(f'BTC Price = ${coin_list[0]}\n ETH Price = ${coin_list[3]}\n')
-    file.write(f'BTC Holdings = {coin_list[2]}BTC\n ETH holdings = {coin_list[5]}ETH \n')
+    file.write(f'BTC Price = ${coin_list[0]}\n\n ETH Price = ${coin_list[3]}\n\n\n')
+    file.write(f'BTC Holdings = {coin_list[2]}BTC\n\n ETH holdings = {coin_list[5]}ETH \n\n')
 
     df = pd.DataFrame({'Date':[str(today)],'Value':[str(vals)]})
     
