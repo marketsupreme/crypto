@@ -40,8 +40,8 @@ def main():
 
     vals = round(coin_list[1]+coin_list[4]+coin_list[8],2)
 
-    file.write(f'\t\t\t\t{today} @ {time} \n\n')
-    file.write(f'\t\t\t\tValue: ${vals}\n\n\n\n')
+    file.write(f'##{today} @ {time} \n\n')
+    file.write(f'#Value: ${vals}\n\n\n\n')
     file.write(f'BTC Price = ${coin_list[0]}\n\ ETH Price = ${coin_list[3]}\n\ DOGE Price = ${coin_list[6]}\n\n\n')
     file.write(f'BTC Holdings = {coin_list[2]}BTC\n\n ETH holdings = {coin_list[5]}ETH\n\n DOGE Holdings = {coin_list[7]}DOGE\n\n')
 
