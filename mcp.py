@@ -42,9 +42,9 @@ def main():
 
     vals = round(coin_list[1]+coin_list[4],2)
 
-    file.write(f'\t\t{today} @ {time} \n\n\n\n')
-    file.write(f'\t\tValue: ${vals}\n\n\n\n')
-    file.write(f'BTC Price = ${coin_list[0]}\n\n ETH Price = ${coin_list[3]}\n\n\n')
+    file.write(f'\t\t\t\t{today} @ {time} \n\n')
+    file.write(f'\t\t\t\tValue: ${vals}\n\n\n\n')
+    file.write(f'BTC Price = ${coin_list[0]}\n\ ETH Price = ${coin_list[3]}\n\n\n')
     file.write(f'BTC Holdings = {coin_list[2]}BTC\n\n ETH holdings = {coin_list[5]}ETH \n\n')
 
     df = pd.DataFrame({'Date':[str(today)],'Value':[str(vals)]})
