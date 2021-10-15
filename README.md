@@ -1,12 +1,12 @@
-### 10/15/21 @ 13:01:17 
+### 10/15/21 @ 14:01:16 
 
-# Value: $169775.68
+# Value: $170418.54
 
 
 
-BTC Price = $61622.08
-\ ETH Price = $3859.05
-\ DOGE Price = $0.23
+BTC Price = $61738.92
+\ ETH Price = $3877.63
+\ DOGE Price = $0.24
 
 
 BTC Holdings = 1.06BTC
