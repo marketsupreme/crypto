@@ -5,6 +5,7 @@ from requests import get
 import json
 import time as t
 from datetime import date, datetime
+import calendar
 import pandas as pd
 from openpyxl import load_workbook
 
@@ -35,12 +36,13 @@ def main():
     file = open('README.md', 'w')
     today = date.today().strftime("%m/%d/%y")
     time = datetime.now().strftime("%H:%M:%S")
+    day = calendar.day_name[date.today().weekday()]
 
     coin_list = getValue()
 
-    vals = round(coin_list[1]+coin_list[4]+coin_list[8],2)
+    vals = "{:,}".format(round(coin_list[1]+coin_list[4]+coin_list[8],2))
 
-    file.write(f'### {today} @ {time} \n\n')
+    file.write(f'#### {day}, {today} @ {time} \n\n')
     file.write(f'# Value: ${vals}\n\n\n\n')
     file.write(f'BTC Price = ${coin_list[0]}\n\ ETH Price = ${coin_list[3]}\n\ DOGE Price = ${coin_list[6]}\n\n\n')
     file.write(f'BTC Holdings = {coin_list[2]}BTC\n\n ETH holdings = {coin_list[5]}ETH\n\n DOGE Holdings = {coin_list[7]}DOGE\n\n')
