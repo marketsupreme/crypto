@@ -23,8 +23,6 @@ def getValue(coinList):
     prices = get('https://api.nomics.com/v1/currencies/ticker?key=ea386addbac03f4bb67ceb1f333a8d0a&ids=BTC,ETH,DOGE&interval=1d&convert=USD&per-page=100&page=1')
     data = prices.json()
 
-    print(portfolio)
-
     #adding the prices of each coin to portfolio dictionary
     for i in range(len(coinList)):
         portfolio[coinList[i]]['price'] = round(float(data[i]['price']),2)
@@ -47,25 +45,31 @@ def getValue(coinList):
 
 def main():
 
+    #opening the readme to be displayed on Github pages
     file = open('README.md', 'w')
+
+    #grabbing date information
     today = date.today().strftime("%m/%d/%y")
     time = datetime.now().strftime("%H:%M:%S")
     day = calendar.day_name[date.today().weekday()]
 
+    #calling getValue function to find portfolio value
     coinDict = getValue(coins)
 
+    #formating and rounding the total portfolio value
     vals = "{:,}".format(round(coinDict['ETH']['value']+coinDict['BTC']['value']+coinDict['DOGE']['value'],2))
     
+    #writing to the readme with value, timestamp, current price info and holdings
     file.write(f'# Value: ${vals}\n\n')
     file.write(f'#### {day}, {today} @ {time} \n\n')
-    file.write(f"BTC Price = ${coinDict['BTC']['price']}\n\ ETH Price = ${coinDict['ETH']['price']}\n\ DOGE Price = ${coinDict['DOGE']['price']}\n\n\n")
+    file.write(f"BTC Price = ${'{:,}'.format(coinDict['BTC']['price'])}\n\ ETH Price = ${'{:,}'.format(coinDict['ETH']['price'])}\n\ DOGE Price = ${'{:,}'.format(coinDict['DOGE']['price'])}\n\n\n")
     file.write(f"BTC Holdings = {coinDict['BTC']['holdings']}BTC\n\n ETH holdings = {coinDict['ETH']['holdings']}ETH\n\n DOGE Holdings = {coinDict['DOGE']['holdings']}DOGE\n\n")
 
     df = pd.DataFrame({'Date':[str(today)],'Value':[vals]})
     
+    #writing the portfolio value to an excel file for data compilation
     wb = load_workbook(filename = 'value.xlsx')
     ws = wb['Sheet']
-
     newRowLoc = ws.max_row + 1
     ws.cell(column=1, row = newRowLoc, value =str(today))
     ws.cell(column=2, row = newRowLoc, value =str(vals))
@@ -75,9 +79,3 @@ def main():
     t.sleep(1)
 
 main()
-
-
-
-
-
-
