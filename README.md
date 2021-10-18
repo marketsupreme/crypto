@@ -1,11 +1,9 @@
-#### Monday, 10/18/21 @ 12:44:00 
+# Value: $167,142.31
 
-# Value: $167,487.11
+#### Monday, 10/18/21 @ 13:22:16 
 
-
-
-BTC Price = $62254.08
-\ ETH Price = $3747.3
+BTC Price = $62071.23
+\ ETH Price = $3741.7
 \ DOGE Price = $0.26
 
 

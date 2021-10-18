@@ -9,27 +9,41 @@ import calendar
 import pandas as pd
 from openpyxl import load_workbook
 
-def getValue():
 
+#global coins variable, available to be updated at anytime
+coins = ['BTC', 'ETH', 'DOGE']
+
+
+def getValue(coinList):
+
+    #nested dictionary will store each coin's information
+    portfolio = {k: {} for k in coinList}
+
+    #getting all crypto prices from Nomics and storing them in a JSON
     prices = get('https://api.nomics.com/v1/currencies/ticker?key=ea386addbac03f4bb67ceb1f333a8d0a&ids=BTC,ETH,DOGE&interval=1d&convert=USD&per-page=100&page=1')
     data = prices.json()
 
-    bit_price = round(float(data[0]['price']),2)
-    eth_price = round(float(data[1]['price']),2)
-    doge_price =round(float(data[2]['price']),2)
+    print(portfolio)
 
-    e = get('https://api.ethplorer.io/getAddressInfo/0xed8b4b3ba4fd5a175613859cab6ab8f010276a3a?apiKey=freekey')
-    data = e.json()
+    #adding the prices of each coin to portfolio dictionary
+    for i in range(len(coinList)):
+        portfolio[coinList[i]]['price'] = round(float(data[i]['price']),2)
 
-    eth_holdings = data['ETH']['balance']
-    bit_holdings = 1.06
-    doge_holdings = 1809.826
+    #getting ethereum holdings and storing in a JSON
+    ethWallet = get('https://api.ethplorer.io/getAddressInfo/0xed8b4b3ba4fd5a175613859cab6ab8f010276a3a?apiKey=freekey')
+    data = ethWallet.json()
 
-    eth_value = eth_holdings*eth_price
-    bit_value = bit_holdings*bit_price
-    doge_value = doge_price*doge_holdings
+    #adding the holdings to portfolio dictionary
+    portfolio['ETH']['holdings']  = data['ETH']['balance']
+    portfolio['BTC']['holdings'] = 1.06
+    portfolio['DOGE']['holdings'] = 1809.826
 
-    return [bit_price, bit_value, bit_holdings, eth_price, eth_value, eth_holdings, doge_price, doge_holdings, doge_value]
+    #adding the value to portfolio dictionary
+    for i in range(len(coinList)):
+        portfolio[coinList[i]]['value'] = portfolio[coinList[i]]['holdings']*portfolio[coinList[i]]['price']
+
+    return portfolio
+
 
 def main():
 
@@ -38,14 +52,14 @@ def main():
     time = datetime.now().strftime("%H:%M:%S")
     day = calendar.day_name[date.today().weekday()]
 
-    coin_list = getValue()
+    coinDict = getValue(coins)
 
-    vals = "{:,}".format(round(coin_list[1]+coin_list[4]+coin_list[8],2))
-
+    vals = "{:,}".format(round(coinDict['ETH']['value']+coinDict['BTC']['value']+coinDict['DOGE']['value'],2))
+    
+    file.write(f'# Value: ${vals}\n\n')
     file.write(f'#### {day}, {today} @ {time} \n\n')
-    file.write(f'# Value: ${vals}\n\n\n\n')
-    file.write(f'BTC Price = ${coin_list[0]}\n\ ETH Price = ${coin_list[3]}\n\ DOGE Price = ${coin_list[6]}\n\n\n')
-    file.write(f'BTC Holdings = {coin_list[2]}BTC\n\n ETH holdings = {coin_list[5]}ETH\n\n DOGE Holdings = {coin_list[7]}DOGE\n\n')
+    file.write(f"BTC Price = ${coinDict['BTC']['price']}\n\ ETH Price = ${coinDict['ETH']['price']}\n\ DOGE Price = ${coinDict['DOGE']['price']}\n\n\n")
+    file.write(f"BTC Holdings = {coinDict['BTC']['holdings']}BTC\n\n ETH holdings = {coinDict['ETH']['holdings']}ETH\n\n DOGE Holdings = {coinDict['DOGE']['holdings']}DOGE\n\n")
 
     df = pd.DataFrame({'Date':[str(today)],'Value':[vals]})
     
