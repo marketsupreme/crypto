@@ -78,11 +78,11 @@ def main():
     stockValue = "{:,}".format(round(stockValue,2))
 
     #writing to the readme with value and timestamp
-    file.write(f'# Value: ${totalValue}\n\n')
+    file.write(f'# Value: ${totalValue} as of {day}, {today} @ {time} \n\n')
     file.write(f'### Crypto Value: ${coinValue}\n\n')
     file.write(f'### Stock Value: ${stockValue}\n\n')
-    file.write(f'#### {day}, {today} @ {time} \n\n')
 
+    file.write('#### Crypto Information \n')
     #Coin prices
     for coin in Coins:
         file.write(f"{coin} Price = ${'{:,}'.format(coinDict[coin]['price'])},  \n")
@@ -92,6 +92,9 @@ def main():
     for coin in Coins:
         file.write(f"{coin} Holdings = {coinDict[coin]['holdings']}{coin},  \n")
     file.write('\n\n')
+
+
+    file.write('#### Stock Information \n')
 
     #Stock prices
     for stock in Stocks:
