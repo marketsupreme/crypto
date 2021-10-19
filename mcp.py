@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from requests import get
+from requests import get,request
 import json
 import time as t
 from datetime import date, datetime
@@ -9,30 +9,25 @@ import calendar
 import pandas as pd
 from openpyxl import load_workbook
 
-
-#global coins variable, available to be updated at anytime
-coins = ['BTC', 'ETH', 'DOGE']
-
-
-def getValue(coinList):
+def getCoinValue(coinList) -> dict():
 
     #nested dictionary will store each coin's information
-    portfolio = {k: {} for k in coinList}
+    portfolio = {k:{} for k in coinList}
 
     #getting all crypto prices from Nomics and storing them in a JSON
-    prices = get('https://api.nomics.com/v1/currencies/ticker?key=ea386addbac03f4bb67ceb1f333a8d0a&ids=BTC,ETH,DOGE&interval=1d&convert=USD&per-page=100&page=1')
-    data = prices.json()
+    prices = get(f'https://api.nomics.com/v1/currencies/ticker?key=ea386addbac03f4bb67ceb1f333a8d0a&ids={",".join(coinList)}&interval=1d&convert=USD&per-page=100&page=1')
+    priceData = prices.json()
 
     #adding the prices of each coin to portfolio dictionary
     for i in range(len(coinList)):
-        portfolio[coinList[i]]['price'] = round(float(data[i]['price']),2)
+        portfolio[coinList[i]]['price'] = round(float(priceData[i]['price']),2)
 
     #getting ethereum holdings and storing in a JSON
     ethWallet = get('https://api.ethplorer.io/getAddressInfo/0xed8b4b3ba4fd5a175613859cab6ab8f010276a3a?apiKey=freekey')
-    data = ethWallet.json()
+    ethData = ethWallet.json()
 
     #adding the holdings to portfolio dictionary
-    portfolio['ETH']['holdings']  = data['ETH']['balance']
+    portfolio['ETH']['holdings']  = ethData['ETH']['balance']
     portfolio['BTC']['holdings'] = 1.06
     portfolio['DOGE']['holdings'] = 1809.826
 
@@ -42,8 +37,34 @@ def getValue(coinList):
 
     return portfolio
 
+def getStockValue(stockDict) -> dict():
+
+
+    url = "https://yh-finance.p.rapidapi.com/stock/v2/get-summary"
+
+    querystring = {"symbol":','.join(stockDict)}
+
+    headers = {
+        'x-rapidapi-host': "yh-finance.p.rapidapi.com",
+        'x-rapidapi-key': "982db98a4bmsh94fff9031be156dp198c9fjsn49f0b840ebbc"
+        }
+
+    prices = request("GET", url, headers=headers, params=querystring)
+
+    priceData = prices.json()
+    file = open('prices.json', 'w')
+    file.write(priceData)
+
+
+
+
+
 
 def main():
+
+    #stocks and crypto variables, available to be updated at anytime
+    Coins = ['BTC', 'ETH', 'DOGE']
+    Stocks = {'TSLA': 1, 'SMG': 10}
 
     #opening the readme to be displayed on Github pages
     file = open('README.md', 'w')
@@ -54,7 +75,8 @@ def main():
     day = calendar.day_name[date.today().weekday()]
 
     #calling getValue function to find portfolio value
-    coinDict = getValue(coins)
+    #coinDict = getCoinValue(Coins)
+    stockDict = getStockValue(Stocks)
 
     #formating and rounding the total portfolio value
     vals = "{:,}".format(round(coinDict['ETH']['value']+coinDict['BTC']['value']+coinDict['DOGE']['value'],2))
