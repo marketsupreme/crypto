@@ -9,14 +9,16 @@ import calendar
 import pandas as pd
 from openpyxl import load_workbook
 
-def getCoinValue(coinList) -> dict():
+def getCoinValue(coinDict) -> dict():
 
     #nested dictionary will store each coin's information
-    portfolio = {k:{} for k in coinList}
+    portfolio = {k:{} for k in coinDict.keys()}
 
     #getting all crypto prices from Nomics and storing them in a JSON
-    prices = get(f'https://api.nomics.com/v1/currencies/ticker?key=ea386addbac03f4bb67ceb1f333a8d0a&ids={",".join(coinList)}&interval=1d&convert=USD&per-page=100&page=1')
+    prices = get(f'https://api.nomics.com/v1/currencies/ticker?key=ea386addbac03f4bb67ceb1f333a8d0a&ids={",".join(coinDict)}&interval=1d&convert=USD&per-page=100&page=1')
     priceData = prices.json()
+
+    
 
     #getting ethereum holdings and storing in a JSON
     # ethWallet = get('https://api.ethplorer.io/getAddressInfo/0xed8b4b3ba4fd5a175613859cab6ab8f010276a3a?apiKey=freekey')
@@ -29,10 +31,11 @@ def getCoinValue(coinList) -> dict():
     portfolio['DOGE']['holdings'] = 1809.826
 
     #adding the value to portfolio dictionary
-    for i in range(len(coinList)):
-        portfolio[coinList[i]]['price'] = round(float(priceData[i]['price']),2)
-        portfolio[coinList[i]]['value'] = portfolio[coinList[i]]['holdings']*portfolio[coinList[i]]['price']
-
+    for indx, key in coinDict.keys():
+        portfolio[key]['price'] = round(float(priceData[indx]['price']),2)
+        portfolio[key]['holdings'] = coinDict[key]
+        portfolio[key]['value'] = portfolio[key]['holdings']*portfolio[coinDict[i]]['price']
+        
     return portfolio
 
 def getStockValue(stockDict) -> dict():
