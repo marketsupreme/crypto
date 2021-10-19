@@ -98,7 +98,7 @@ def main():
 
     file.write('#### Stock Information \n\n')
 
-    file.write('*Stock prices* \n')
+    file.write('*Stock prices* \n\n')
     #Stock prices
     for stock in Stocks:
         file.write(f"{stock} Price = ${'{:,}'.format(stockDict[stock]['price'])},  \n")
