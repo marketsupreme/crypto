@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from requests import get,request
+from requests import get, patch
 import json
 import time as t
 from datetime import date, datetime
@@ -39,26 +39,17 @@ def getCoinValue(coinList) -> dict():
 
 def getStockValue(stockDict) -> dict():
 
+    stockKey = '10SVU9Y1PENCIBZN'
+    portfolio = {k:{} for k in stockDict.keys()}
 
-    url = "https://yh-finance.p.rapidapi.com/stock/v2/get-summary"
-
-    querystring = {"symbol":','.join(stockDict)}
-
-    headers = {
-        'x-rapidapi-host': "yh-finance.p.rapidapi.com",
-        'x-rapidapi-key': "982db98a4bmsh94fff9031be156dp198c9fjsn49f0b840ebbc"
-        }
-
-    prices = request("GET", url, headers=headers, params=querystring)
-
-    priceData = prices.json()
-    file = open('prices.json', 'w')
-    file.write(priceData)
-
-
-
-
-
+    for ticker in stockDict.keys():
+        prices = get(f'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={ticker}&apikey={stockKey}')
+        priceData = prices.json()
+        portfolio[ticker]['price'] = round(float(priceData['Global Quote']["05. price"]),2)
+        portfolio[ticker]['holdings'] = stockDict[ticker]
+        portfolio[ticker]['value'] = portfolio[ticker]['holdings']*portfolio[ticker]['price']
+    
+    return portfolio
 
 def main():
 
@@ -75,26 +66,48 @@ def main():
     day = calendar.day_name[date.today().weekday()]
 
     #calling getValue function to find portfolio value
-    #coinDict = getCoinValue(Coins)
+    coinDict = getCoinValue(Coins)
     stockDict = getStockValue(Stocks)
 
-    #formating and rounding the total portfolio value
-    vals = "{:,}".format(round(coinDict['ETH']['value']+coinDict['BTC']['value']+coinDict['DOGE']['value'],2))
-    
-    #writing to the readme with value, timestamp, current price info and holdings
-    file.write(f'# Value: ${vals}\n\n')
-    file.write(f'#### {day}, {today} @ {time} \n\n')
-    file.write(f"BTC Price = ${'{:,}'.format(coinDict['BTC']['price'])}\n\ ETH Price = ${'{:,}'.format(coinDict['ETH']['price'])}\n\ DOGE Price = ${'{:,}'.format(coinDict['DOGE']['price'])}\n\n\n")
-    file.write(f"BTC Holdings = {coinDict['BTC']['holdings']}BTC\n\n ETH holdings = {coinDict['ETH']['holdings']}ETH\n\n DOGE Holdings = {coinDict['DOGE']['holdings']}DOGE\n\n")
+    #formating and rounding the total portfolio values
+    coinValue = "{:,}".format(round(sum(coin['value'] for coin in coinDict.values() if coin),2))
+    stockValue = "{:,}".format(round(sum(stock['value'] for stock in stockDict.values() if stock),2))
+    totalValue = coinValue+stockValue
 
-    df = pd.DataFrame({'Date':[str(today)],'Value':[vals]})
+    #writing to the readme with value and timestamp
+    file.write(f'# Value: ${totalValue}\n\n')
+    file.write(f'## Crypto Value: ${coinValue}\n\n')
+    file.write(f'## Stock Value: ${stockValue}\n\n')
+    file.write(f'#### {day}, {today} @ {time} \n\n')
+
+    #Coin prices
+    for coin in Coins:
+        file.write(f"{coin} Price = ${'{:,}'.format(coinDict[coin]['price'])}\n")
+    file.write('\n\n')
+    
+    #Coin holdings
+    for coin in Coins:
+        file.write(f"{coin} Holdings = {coinDict['BTC']['holdings']}{coin}\n")
+    file.write('\n\n')
+
+    #Stock prices
+    for stock in Stocks:
+        file.write(f"{stock} Price = ${'{:,}'.format(stockDict[stock]['price'])}\n")
+    file.write('\n\n')
+    
+    #Stock holdings
+    for coin in Coins:
+        file.write(f"{coin} Holdings = {coinDict['BTC']['holdings']}{coin}\n")
+    file.write('\n\n')
+
+    df = pd.DataFrame({'Date':[str(today)],'Value':[totalValue]})
     
     #writing the portfolio value to an excel file for data compilation
     wb = load_workbook(filename = 'value.xlsx')
     ws = wb['Sheet']
     newRowLoc = ws.max_row + 1
     ws.cell(column=1, row = newRowLoc, value =str(today))
-    ws.cell(column=2, row = newRowLoc, value =str(vals))
+    ws.cell(column=2, row = newRowLoc, value =str(totalValue))
     wb.save(filename='value.xlsx')
     wb.close()
 
