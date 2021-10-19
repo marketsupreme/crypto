@@ -53,7 +53,7 @@ def main():
 
     #stocks and crypto variables, available to be updated at anytime
     Coins = {'BTC': 1.06, 'ETH': 26.960005962, 'DOGE': 1809.826}
-    Stocks = {'TSLA': 1, 'SMG': 10}
+    Stocks = {'TSLA': 1, 'SMG': 10, 'EL': 20, 'PYPL': 20}
 
     #opening the readme to be displayed on Github pages
     file = open('README.md', 'w')

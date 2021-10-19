@@ -1,14 +1,14 @@
-# Value: $174,303.12 as of Tuesday, 10/19/21 @ 17:43:04 
+# Value: $187,087.88 as of Tuesday, 10/19/21 @ 18:08:41 
 
-### Crypto Value: $171,953.85
+### Crypto Value: $173,056.01
 
-### Stock Value: $2,349.27
+### Stock Value: $14,031.87
 
 #### Crypto Information 
 *Crypto prices* 
 
-BTC Price = $64,111.31,  
-ETH Price = $3,840.63,  
+BTC Price = $64,239.27,  
+ETH Price = $3,876.48,  
 DOGE Price = $0.25,  
 
 
@@ -25,11 +25,15 @@ DOGE Holdings = 1809.826DOGE,
 
 TSLA Price = $864.27,  
 SMG Price = $148.5,  
+EL Price = $312.43,  
+PYPL Price = $271.7,  
 
 
 *Stock holdings* 
 
 TSLA Holdings = 1,  
 SMG Holdings = 10,  
+EL Holdings = 20,  
+PYPL Holdings = 20,  
 
 
