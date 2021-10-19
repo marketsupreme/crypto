@@ -84,26 +84,30 @@ def main():
 
     file.write('#### Crypto Information \n')
 
+    file.write('*Crypto prices* \n')
     #Coin prices
     for coin in Coins:
-        file.write(f"- {coin} Price = ${'{:,}'.format(coinDict[coin]['price'])},  \n")
+        file.write(f"{coin} Price = ${'{:,}'.format(coinDict[coin]['price'])},  \n")
     file.write('\n\n')
     
+    file.write('*Crypto holdigns* \n')
     #Coin holdings
     for coin in Coins:
-        file.write(f"- {coin} Holdings = {coinDict[coin]['holdings']}{coin},  \n")
+        file.write(f"{coin} Holdings = {coinDict[coin]['holdings']}{coin},  \n")
     file.write('\n\n')
 
     file.write('#### Stock Information \n')
 
+    file.write('*Stock prices* \n')
     #Stock prices
     for stock in Stocks:
-        file.write(f"- {stock} Price = ${'{:,}'.format(stockDict[stock]['price'])},  \n")
+        file.write(f"{stock} Price = ${'{:,}'.format(stockDict[stock]['price'])},  \n")
     file.write('\n\n')
     
+    file.write('*Stock holdings* \n')
     #Stock holdings
     for stock in Stocks:
-        file.write(f"- {stock} Holdings = {stockDict[stock]['holdings']},  \n")
+        file.write(f"{stock} Holdings = {stockDict[stock]['holdings']},  \n")
     file.write('\n\n')
 
     df = pd.DataFrame({'Date':[str(today)],'Value':[totalValue]})
