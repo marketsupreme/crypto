@@ -70,14 +70,17 @@ def main():
     stockDict = getStockValue(Stocks)
 
     #formating and rounding the total portfolio values
-    coinValue = "{:,}".format(round(sum(coin['value'] for coin in coinDict.values() if coin),2))
-    stockValue = "{:,}".format(round(sum(stock['value'] for stock in stockDict.values() if stock),2))
-    totalValue = coinValue+stockValue
+    coinValue = sum(coin['value'] for coin in coinDict.values() if coin)
+    stockValue = sum(stock['value'] for stock in stockDict.values() if stock)
+    totalValue = "{:,}".format(round(coinValue+stockValue,2))
+
+    coinValue = "{:,}".format(round(coinValue,2))
+    stockValue = "{:,}".format(round(stockValue,2))
 
     #writing to the readme with value and timestamp
     file.write(f'# Value: ${totalValue}\n\n')
-    file.write(f'## Crypto Value: ${coinValue}\n\n')
-    file.write(f'## Stock Value: ${stockValue}\n\n')
+    file.write(f'### Crypto Value: ${coinValue}\n\n')
+    file.write(f'### Stock Value: ${stockValue}\n\n')
     file.write(f'#### {day}, {today} @ {time} \n\n')
 
     #Coin prices
@@ -87,7 +90,7 @@ def main():
     
     #Coin holdings
     for coin in Coins:
-        file.write(f"{coin} Holdings = {coinDict['BTC']['holdings']}{coin}\n")
+        file.write(f"{coin} Holdings = {coinDict[coin]['holdings']}{coin}\n")
     file.write('\n\n')
 
     #Stock prices
@@ -96,8 +99,8 @@ def main():
     file.write('\n\n')
     
     #Stock holdings
-    for coin in Coins:
-        file.write(f"{coin} Holdings = {coinDict['BTC']['holdings']}{coin}\n")
+    for stock in Stocks:
+        file.write(f"{stock} Holdings = {stockDict[stock]['holdings']}\n")
     file.write('\n\n')
 
     df = pd.DataFrame({'Date':[str(today)],'Value':[totalValue]})
