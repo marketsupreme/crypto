@@ -85,22 +85,22 @@ def main():
 
     #Coin prices
     for coin in Coins:
-        file.write(f"{coin} Price = ${'{:,}'.format(coinDict[coin]['price'])}\n")
+        file.write(f"{coin} Price = ${'{:,}'.format(coinDict[coin]['price'])},  \n")
     file.write('\n\n')
     
     #Coin holdings
     for coin in Coins:
-        file.write(f"{coin} Holdings = {coinDict[coin]['holdings']}{coin}\n")
+        file.write(f"{coin} Holdings = {coinDict[coin]['holdings']}{coin},  \n")
     file.write('\n\n')
 
     #Stock prices
     for stock in Stocks:
-        file.write(f"{stock} Price = ${'{:,}'.format(stockDict[stock]['price'])}\n")
+        file.write(f"{stock} Price = ${'{:,}'.format(stockDict[stock]['price'])},  \n")
     file.write('\n\n')
     
     #Stock holdings
     for stock in Stocks:
-        file.write(f"{stock} Holdings = {stockDict[stock]['holdings']}\n")
+        file.write(f"{stock} Holdings = {stockDict[stock]['holdings']},  \n")
     file.write('\n\n')
 
     df = pd.DataFrame({'Date':[str(today)],'Value':[totalValue]})
