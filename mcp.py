@@ -25,16 +25,13 @@ def getCoinValue(coinDict) -> dict():
     # ethData = ethWallet.json()
     # portfolio['ETH']['holdings']  = ethData['ETH']['balance']
 
-    #adding the holdings to portfolio dictionary
-    portfolio['ETH']['holdings']  = 26.960005962
-    portfolio['BTC']['holdings'] = 1.06
-    portfolio['DOGE']['holdings'] = 1809.826
-
     #adding the value to portfolio dictionary
-    for indx, key in coinDict.keys():
-        portfolio[key]['price'] = round(float(priceData[indx]['price']),2)
+    count = 0
+    for key in coinDict.keys():
+        portfolio[key]['price'] = round(float(priceData[count]['price']),2)
         portfolio[key]['holdings'] = coinDict[key]
-        portfolio[key]['value'] = portfolio[key]['holdings']*portfolio[coinDict[i]]['price']
+        portfolio[key]['value'] = portfolio[key]['holdings']*portfolio[key]['price']
+        count += 1
         
     return portfolio
 
