@@ -18,21 +18,19 @@ def getCoinValue(coinList) -> dict():
     prices = get(f'https://api.nomics.com/v1/currencies/ticker?key=ea386addbac03f4bb67ceb1f333a8d0a&ids={",".join(coinList)}&interval=1d&convert=USD&per-page=100&page=1')
     priceData = prices.json()
 
-    #adding the prices of each coin to portfolio dictionary
-    for i in range(len(coinList)):
-        portfolio[coinList[i]]['price'] = round(float(priceData[i]['price']),2)
-
     #getting ethereum holdings and storing in a JSON
-    ethWallet = get('https://api.ethplorer.io/getAddressInfo/0xed8b4b3ba4fd5a175613859cab6ab8f010276a3a?apiKey=freekey')
-    ethData = ethWallet.json()
+    # ethWallet = get('https://api.ethplorer.io/getAddressInfo/0xed8b4b3ba4fd5a175613859cab6ab8f010276a3a?apiKey=freekey')
+    # ethData = ethWallet.json()
+    # portfolio['ETH']['holdings']  = ethData['ETH']['balance']
 
     #adding the holdings to portfolio dictionary
-    portfolio['ETH']['holdings']  = ethData['ETH']['balance']
+    portfolio['ETH']['holdings']  = 26.960005962
     portfolio['BTC']['holdings'] = 1.06
     portfolio['DOGE']['holdings'] = 1809.826
 
     #adding the value to portfolio dictionary
     for i in range(len(coinList)):
+        portfolio[coinList[i]]['price'] = round(float(priceData[i]['price']),2)
         portfolio[coinList[i]]['value'] = portfolio[coinList[i]]['holdings']*portfolio[coinList[i]]['price']
 
     return portfolio
@@ -54,7 +52,7 @@ def getStockValue(stockDict) -> dict():
 def main():
 
     #stocks and crypto variables, available to be updated at anytime
-    Coins = ['BTC', 'ETH', 'DOGE']
+    Coins = {'BTC': 1.06, 'ETH': 26.960005962, 'DOGE': 1809.826}
     Stocks = {'TSLA': 1, 'SMG': 10}
 
     #opening the readme to be displayed on Github pages
