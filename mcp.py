@@ -8,6 +8,7 @@ from datetime import date, datetime
 import calendar
 import pandas as pd
 from openpyxl import load_workbook
+import finnhub
 
 def getCoinValue(coinDict) -> dict():
 
@@ -37,16 +38,15 @@ def getCoinValue(coinDict) -> dict():
 
 def getStockValue(stockDict) -> dict():
 
-    stockKey = '10SVU9Y1PENCIBZN'
     portfolio = {k:{} for k in stockDict.keys()}
 
+    finnhub_client = finnhub.Client(api_key="c5oag5qad3i92b410lh0")
+
     for ticker in stockDict.keys():
-        prices = get(f'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={ticker}&apikey={stockKey}')
-        priceData = prices.json()
-        portfolio[ticker]['price'] = round(float(priceData["Global Quote"]["05. price"]),2)
+        price = finnhub_client.quote(ticker)
+        portfolio[ticker]['price'] = price['c']
         portfolio[ticker]['holdings'] = stockDict[ticker]
         portfolio[ticker]['value'] = portfolio[ticker]['holdings']*portfolio[ticker]['price']
-        t.sleep(13)
     
     return portfolio
 
@@ -54,11 +54,10 @@ def main():
 
     #stocks and crypto variables, available to be updated at anytime
     Coins = {'BTC': 1.06, 'ETH': 26.960005962, 'DOGE': 1809.826}
-    Stocks = {'AMZN': 3,'ACB': 41,'ACNNF': 1000,'CNGGF': 200, 
-            'CHALF': 217, 'EL': 5,'PLTR': 61,
-            'PYPL': 6,'QS': 30,
-            'SMG': 15,'TSLA': 3,
-            'TLRY': 167, 'MRRCF': 700}
+    Stocks = {'AMZN': 3,'ACB': 41,'ACNNF': 1000,
+            'CNGGF': 200,'CHALF': 217, 'EL': 5,
+            'PLTR': 61,'PYPL': 6,'QS': 30,
+            'SMG': 15,'TSLA': 3,'TLRY': 167, 'MRRCF': 700}
 
     #opening the readme to be displayed on Github pages
     file = open('README.md', 'w')
