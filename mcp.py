@@ -46,7 +46,7 @@ def getStockValue(stockDict) -> dict():
         portfolio[ticker]['price'] = round(float(priceData["Global Quote"]["05. price"]),2)
         portfolio[ticker]['holdings'] = stockDict[ticker]
         portfolio[ticker]['value'] = portfolio[ticker]['holdings']*portfolio[ticker]['price']
-        t.sleep(15)
+        t.sleep(13)
     
     return portfolio
 
