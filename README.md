@@ -1,14 +1,14 @@
-# Value: $209,411.85 as of Friday, 10/29/21 @ 15:01:39 
+# Value: $209,328.09 as of Friday, 10/29/21 @ 16:01:39 
 
-### Crypto Value: $186,032.69
+### Crypto Value: $185,953.44
 
-### Stock Value: $23,379.16
+### Stock Value: $23,374.66
 
 #### Crypto Information 
 *Crypto prices* 
 
-BTC Price = $62,744.15,  
-ETH Price = $4,413.91,  
+BTC Price = $62,653.36,  
+ETH Price = $4,414.54,  
 DOGE Price = $0.29,  
 
 
@@ -31,8 +31,8 @@ CHALF Price = $0.5399,
 EL Price = $324.33,  
 PLTR Price = $25.88,  
 PYPL Price = $232.59,  
-QS Price = $29.13,  
-SMG Price = $148.38,  
+QS Price = $28.94,  
+SMG Price = $148.46,  
 TSLA Price = $1,114,  
 TLRY Price = $10.3,  
 MRRCF Price = $0.0001,  
