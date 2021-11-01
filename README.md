@@ -1,14 +1,14 @@
-# Value: $205,610.14 as of Sunday, 10/31/21 @ 19:48:26 
+# Value: $205,187.44 as of Sunday, 10/31/21 @ 20:48:10 
 
-### Crypto Value: $182,235.49
+### Crypto Value: $181,812.8
 
 ### Stock Value: $23,374.65
 
 #### Crypto Information 
 *Crypto prices* 
 
-BTC Price = $61,662.84,  
-ETH Price = $4,316.25,  
+BTC Price = $61,573.86,  
+ETH Price = $4,304.07,  
 DOGE Price = $0.28,  
 
 
@@ -53,8 +53,5 @@ SMG Holdings = 15,
 TSLA Holdings = 3,  
 TLRY Holdings = 167,  
 MRRCF Holdings = 700,  
-
-
-
 
 
