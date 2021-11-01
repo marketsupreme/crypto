@@ -1,8 +1,8 @@
-# Value: $205,610.21 as of Sunday, 10/31/21 @ 19:48:25 
+# Value: $205,610.14 as of Sunday, 10/31/21 @ 19:48:26 
 
 ### Crypto Value: $182,235.49
 
-### Stock Value: $23,374.72
+### Stock Value: $23,374.65
 
 #### Crypto Information 
 *Crypto prices* 
@@ -35,7 +35,7 @@ QS Price = $28.94,
 SMG Price = $148.46,  
 TSLA Price = $1,114,  
 TLRY Price = $10.3,  
-MRRCF Price = $0.0001,  
+MRRCF Price = $0,  
 
 
 *Stock holdings* 
@@ -53,5 +53,8 @@ SMG Holdings = 15,
 TSLA Holdings = 3,  
 TLRY Holdings = 167,  
 MRRCF Holdings = 700,  
+
+
+
 
 
