@@ -1,15 +1,15 @@
-# Value: $151,828.48 as of Sunday, 01/09/22 @ 23:44:45 
+# Value: $145,118.44 as of Monday, 01/10/22 @ 11:43:15 
 
-### Crypto Value: $130,611.76
+### Crypto Value: $124,342.14
 
-### Stock Value: $21,216.72
+### Stock Value: $20,776.3
 
 #### Crypto Information 
 *Crypto prices* 
 
-BTC Price = $42,116.6,  
-ETH Price = $3,178.66,  
-DOGE Price = $0.15,  
+BTC Price = $40,873.1,  
+ETH Price = $2,995.67,  
+DOGE Price = $0.14,  
 
 
 *Crypto holdings* 
@@ -23,19 +23,19 @@ DOGE Holdings = 1809.826DOGE,
 
 *Stock prices* 
 
-AMZN Price = $3,251.08,  
-ACB Price = $5.51,  
-ACNNF Price = $0.0577,  
-CNGGF Price = $0,  
-CHALF Price = $0.3382,  
-EL Price = $354.93,  
-PLTR Price = $16.56,  
-PYPL Price = $187.6,  
-QS Price = $21.01,  
-SMG Price = $160.85,  
-TSLA Price = $1,026.96,  
-TLRY Price = $6.42,  
-MRRCF Price = $0,  
+AMZN Price = $3,154.5337,  
+ACB Price = $5.645,  
+ACNNF Price = $0.0573,  
+CNGGF Price = $0.201,  
+CHALF Price = $0.32762,  
+EL Price = $334.045,  
+PLTR Price = $15.43,  
+PYPL Price = $179.505,  
+QS Price = $19.58,  
+SMG Price = $158.14,  
+TSLA Price = $1,015.19,  
+TLRY Price = $7.3,  
+MRRCF Price = $1e-06,  
 
 
 *Stock holdings* 
