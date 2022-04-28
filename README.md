@@ -1,14 +1,14 @@
-# Value: $136,905.54 as of Wednesday, 04/27/22 @ 22:19:00 
+# Value: $136,662.13 as of Thursday, 04/28/22 @ 00:10:37 
 
-### Crypto Value: $120,475.67
+### Crypto Value: $120,232.26
 
 ### Stock Value: $16,429.86
 
 #### Crypto Information 
 *Crypto prices* 
 
-BTC Price = $39,568.72,  
-ETH Price = $2,903.54,  
+BTC Price = $39,488.13,  
+ETH Price = $2,897.68,  
 DOGE Price = $0.14,  
 
 
