@@ -54,7 +54,7 @@ def main():
 
     #stocks and crypto variables, available to be updated at anytime
     Coins = {'BTC': 1.06, 'ETH': 26.960005962, 'DOGE': 1809.826}
-    Stocks = {'AMZN': 3,'ACB': 41,'ACNNF': 1000,
+    Stocks = {'AMZN': 30,'ACB': 41,'ACNNF': 1000,
             'CNGGF': 200,'CHALF': 217, 'EL': 5,
             'PLTR': 61,'PYPL': 6,'QS': 30,
             'SMG': 15,'TSLA': 3,'TLRY': 167, 'MRRCF': 700}

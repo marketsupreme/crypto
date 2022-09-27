@@ -1,14 +1,14 @@
-# Value: $62,995.9 as of Monday, 09/26/22 @ 20:48:32 
+# Value: $65,911.24 as of Monday, 09/26/22 @ 20:56:18 
 
-### Crypto Value: $58,102.18
+### Crypto Value: $57,908.47
 
-### Stock Value: $4,893.72
+### Stock Value: $8,002.77
 
 #### Crypto Information 
 *Crypto prices* 
 
-BTC Price = $19,814.51,  
-ETH Price = $1,372.04,  
+BTC Price = $19,770.89,  
+ETH Price = $1,366.57,  
 DOGE Price = $0.06,  
 
 
@@ -40,7 +40,7 @@ MRRCF Price = $1e-06,
 
 *Stock holdings* 
 
-AMZN Holdings = 3,  
+AMZN Holdings = 30,  
 ACB Holdings = 41,  
 ACNNF Holdings = 1000,  
 CNGGF Holdings = 200,  
